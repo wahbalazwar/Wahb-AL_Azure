@@ -1,0 +1,284 @@
+/* إعدادات عامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+body {
+    color: #333;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* تنسيق الرأس */
+.main-header {
+    background-color: #4a90e2;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    width: 100%;
+    border-radius: 0 0 50% 50% / 15%;
+}
+
+.header-content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.header-content h2 {
+    font-size: 1.5rem;
+    color: #eee;
+}
+
+.header-content p {
+    font-size: 1.2rem;
+    margin: 20px 0;
+}
+
+.btn-download {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #ff5722;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: background 0.3s;
+}
+
+.btn-download:hover {
+    background: #ff7043;
+}
+
+/* تنسيق قسم المؤهلات */
+.qualifications {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #ffffff;
+    margin: 20px 0;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+}
+
+.qualifications h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.qualifications ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.qualifications li {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+/* تنسيق قسم الاتصال */
+.contact {
+    padding: 50px 20px;
+    background-color: #fafafa;
+    text-align: center;
+    margin: 20px 0;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+}
+
+.contact h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.contact form {
+    max-width: 500px;
+    margin: auto;
+}
+
+.contact input, .contact textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.contact button {
+    padding: 10px 20px;
+    background: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 1rem;
+}
+
+.contact button:hover {
+    background: #357abd;
+}
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    margin: 20px auto;
+    display: block;
+}
+
+
+/* تنسيق قسم السيرة الذاتية */
+.resume {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
+    gap: 20px;
+}
+
+.resume-section {
+    width: 48%;
+    padding: 25px;
+    background: linear-gradient(135deg, #f5f7fa, #e4e9f0);
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: right;
+}
+
+.resume-section:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+.resume-section h2 {
+    font-size: 2rem;
+    color: #333;
+    border-bottom: 3px solid #2b2d42;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.resume-section p {
+    font-size: 1.2rem;
+    color: #444;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.resume-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.resume-section li {
+    font-size: 1.1rem;
+    color: #666;
+    background: #e8eaf6;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.resume-section li:hover {
+    background: #d1d9ff;
+}
+
+/* التنسيق للغة الإنجليزية من اليسار لليمين */
+.resume-section.english {
+    text-align: left;
+    direction: ltr;
+}
+
+@media (max-width: 768px) {
+    .resume-section {
+        width: 100%;
+    }
+}
+
+
+.contact-me {
+    background-color: #222;
+    padding-top:25px;
+    padding: 40px;
+    border-radius: 12px;
+    color: #f3f3f3;
+    max-width: 800px;
+    margin-top:25px;
+    margin: 40px auto;
+    text-align: center;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.contact-me:hover {
+    transform: scale(1.02);
+}
+
+.contact-me h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #1abc9c;
+}
+
+.contact-me p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #ddd;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: #ddd;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.contact-item:hover {
+    background-color: #444;
+}
+
+.contact-item i {
+    margin-right: 10px;
+    font-size: 1.5rem;
+    color: #1abc9c;
+}
+
+.contact-item a {
+    color: #1abc9c;
+    text-decoration: none;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+}
