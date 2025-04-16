@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>السيرة الذاتية | وهب الأزور</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
 
@@ -63,8 +65,94 @@
             <a href="https://t.me/Wahb_AL_Azwre" target="_blank" class="contact-link telegram">📲 Telegram</a>
         </div>
         <!-- Download CV Button -->
-    <a href="/storage/emulated/0/Download/Wahb_AL_Azure_CV.pdf" download class="download-btn">📄 تحميل السيرة الذاتية</a>
-    </section>
 
+    </section>
+<button id="downloadPdfBtn" class="download-btn">📄 تحميل السيرة الذاتية<button>
+
+
+<script>
+document.getElementById('downloadPdfBtn').addEventListener('click', async function() {
+    try {
+        const { jsPDF } = window.jspdf;
+        
+        // 1. إنشاء عنصر وهمي لعزل عملية التصدير
+        const exportContainer = document.createElement('div');
+        exportContainer.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 99999;
+            width: ${document.documentElement.scrollWidth}px;
+            height: ${document.documentElement.scrollHeight}px;
+            background: transparent;
+            pointer-events: none;
+            overflow: visible;
+        `;
+        
+        // 2. نسخ المحتوى مع الحفاظ على التنسيقات
+        const contentClone = document.body.cloneNode(true);
+        contentClone.id = 'export-clone';
+        exportContainer.appendChild(contentClone);
+        document.body.appendChild(exportContainer);
+        
+        // 3. إصلاح CSS جذري
+        const fixStyles = `
+            #export-clone * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                forced-color-adjust: none !important;
+                background-image: none !important;
+                filter: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+                box-shadow: none !important;
+                mix-blend-mode: normal !important;
+            }
+        `;
+        const styleTag = document.createElement('style');
+        styleTag.textContent = fixStyles;
+        exportContainer.appendChild(styleTag);
+        
+        // 4. التقاط المحتوى بدقة عالية
+        const canvas = await html2canvas(exportContainer, {
+            scale: window.devicePixelRatio * 1.5,
+            useCORS: true,
+            logging: true,
+            backgroundColor: null,
+            allowTaint: true,
+            removeContainer: true
+        });
+        
+        // 5. إنشاء PDF مع ضبط الألوان
+        const pdf = new jsPDF({
+            orientation: 'p',
+            unit: 'mm',
+            format: [canvas.width * 0.264583, canvas.height * 0.264583],
+            compress: true,
+            putOnlyUsedFonts: true
+        });
+        
+        pdf.addImage(canvas, 'PNG', 0, 0, 
+            pdf.internal.pageSize.getWidth(), 
+            pdf.internal.pageSize.getHeight(),
+            null, 'FAST', 0, { 
+                encoding: 'RGB',
+                colorSpace: 'DeviceRGB'
+            }
+        );
+        
+        // 6. التنظيف والحفظ
+        document.body.removeChild(exportContainer);
+        const filename = `CV_${Date.now()}.pdf`;
+        pdf.save(filename);
+        
+    } catch (error) {
+        console.error('Export Error:', error);
+        alert('حدث خطأ أثناء التصدير، الرجاء المحاولة لاحقًا');
+    }
+});
+</script>
 </body>
-</html>
+    </html>
+    
